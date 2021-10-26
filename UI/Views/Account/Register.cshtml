@@ -1,0 +1,29 @@
+﻿@using System.Threading.Tasks
+@model UI.Models.RegisterViewModel
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<form asp-controller="Account" asp-action="Register" method="post" class="list-group-horizontal" role="form">
+    <div style="margin:20px;">
+        <label style="color:forestgreen; font-size:24px; font-weight:bold;">Kullanıcı Kaydı</label>
+        <hr class="container-fluid" />
+    </div>
+    <div class="input-group" style="margin:20px;">
+        <input asp-for="UserName" class="form-control" placeholder="Kullanıcı Adı" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <div class="input-group" style="margin:20px;">
+        <input asp-for="Password" class="form-control" placeholder="Şifre" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="input-group" style="margin:20px;">
+        <input asp-for="Email" class="form-control" placeholder="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div style="margin:20px;">
+        <input type="submit" class="btn btn-success" value="Kayıt ol" />
+        <a class="btn btn-outline-success" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+    </div>
+</form>

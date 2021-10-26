@@ -1,0 +1,58 @@
+﻿@model UI.Models.CartSummaryViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        <th>ProductName</th>
+        <th>UnitPrice</th>
+        <th>UnitsInStock</th>
+        <th>Quantity</th>
+        <th></th>
+
+    </tr>
+    @foreach (var item in Model.Cart.CartLines)
+    {
+        <tr>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Product.UnitPrice</td>
+            <td>@item.Product.UnitsInStock</td>
+            <td>@item.Quantity</td>
+            <td class="text-right"><a class="btn btn-danger" asp-controller="Cart" asp-action="Remove" asp-route-productId="@item.Product.ProductId">
+                 <span class="navbar-toggler-icon"></span>Sepetten Sil</a></td>
+        </tr>
+    }
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+        <h3>Toplam</h3>
+    </td>
+    <td class="text-right">
+        <h3>
+            <strong>@Model.Cart.Total</strong>
+        </h3>
+    </td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-sm btn-outline-secondary">
+            <span class="carousel-control-next-icon"></span>Alışverişe Devam Et
+        </a>
+    </td>
+    <td class="text-right">
+        <a asp-controller="Cart" asp-action="Complete" class="btn btn-sm btn-success">
+            <span class="carousel-control-prev-icon"></span>Alışverişi Tamamla
+        </a>
+    </td>
+
+</tr>
+
+</table>
